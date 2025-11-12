@@ -1,0 +1,200 @@
+.simulationPage {
+  padding: 30px;
+  min-height: 100vh;
+  background: #0f3460;
+}
+
+.header {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+  margin: 0 0 8px 0;
+  color: #4ecca3;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 0;
+  color: #adb5bd;
+  font-size: 14px;
+}
+
+.scenariosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.scenarioCard {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.scenarioCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #1a1a2e;
+}
+
+.icon {
+  font-size: 32px;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.cardBody {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.description {
+  color: #adb5bd;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details li {
+  color: #6c757d;
+  font-size: 13px;
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.details li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #4ecca3;
+  font-size: 18px;
+}
+
+.btn {
+  width: 100%;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btnPrimary {
+  background: #4ecca3;
+  color: #1a1a2e;
+}
+
+.btnPrimary:hover {
+  background: #45b390;
+}
+
+.btnDanger {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.btnDanger:hover {
+  background: #ee5a52;
+}
+
+.infoSection {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.infoSection h2 {
+  margin: 0 0 15px 0;
+  color: #4ecca3;
+  font-size: 24px;
+}
+
+.algorithmInfo {
+  color: #adb5bd;
+  line-height: 1.8;
+}
+
+.algorithmInfo p {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.algorithmInfo strong {
+  color: #4ecca3;
+}
+
+.algorithmInfo h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 20px 0 15px 0;
+}
+
+.algorithmInfo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.algorithmInfo li {
+  padding: 10px 0;
+  padding-left: 30px;
+  position: relative;
+  font-size: 14px;
+}
+
+.algorithmInfo li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #4ecca3;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .scenariosGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

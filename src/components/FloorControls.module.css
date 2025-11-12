@@ -1,0 +1,123 @@
+.floorControls {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1a1a2e;
+  padding-bottom: 15px;
+}
+
+.header h3 {
+  margin: 0 0 5px 0;
+  color: #4ecca3;
+  font-size: 18px;
+}
+
+.header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.floorsContainer {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floorRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: #1a1a2e;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.floorRow:hover {
+  background: #0f3460;
+}
+
+.floorLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  min-width: 40px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #0f3460;
+  color: #adb5bd;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btnUp {
+  border-color: #4ecca3;
+}
+
+.btnUp:hover:not(:disabled) {
+  background: #4ecca3;
+  color: #1a1a2e;
+}
+
+.btnUp.active {
+  background: #4ecca3;
+  color: #1a1a2e;
+  animation: pulse 1s infinite;
+}
+
+.btnDown {
+  border-color: #ff6b6b;
+}
+
+.btnDown:hover:not(:disabled) {
+  background: #ff6b6b;
+  color: #1a1a2e;
+}
+
+.btnDown.active {
+  background: #ff6b6b;
+  color: #1a1a2e;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+

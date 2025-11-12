@@ -1,0 +1,118 @@
+.interiorControls {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1a1a2e;
+  padding-bottom: 15px;
+}
+
+.header h3 {
+  margin: 0 0 5px 0;
+  color: #4ecca3;
+  font-size: 18px;
+}
+
+.header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.elevatorPanels {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.panel {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #0f3460;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.currentFloor {
+  color: #4ecca3;
+  font-size: 12px;
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.floorBtn {
+  aspect-ratio: 1;
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  background: #0f3460;
+  color: #adb5bd;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.floorBtn:hover:not(:disabled) {
+  background: #4ecca3;
+  color: #1a1a2e;
+  border-color: #4ecca3;
+  transform: scale(1.1);
+}
+
+.floorBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.floorBtn.active {
+  background: #4ecca3;
+  color: #1a1a2e;
+  border-color: #4ecca3;
+  animation: pulse 1s infinite;
+}
+
+.floorBtn.current {
+  background: #6c757d;
+  color: #1a1a2e;
+  border-color: #6c757d;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 1200px) {
+  .elevatorPanels {
+    grid-template-columns: 1fr;
+  }
+}
+

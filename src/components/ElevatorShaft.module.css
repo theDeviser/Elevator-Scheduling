@@ -1,0 +1,162 @@
+.shaftContainer {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.header h3 {
+  margin: 0;
+  color: #4ecca3;
+  font-size: 18px;
+}
+
+.shaft {
+  flex: 1;
+  position: relative;
+  background: #0f3460;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.floorMarkers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.floorMarker {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #1a1a2e;
+  padding: 0 10px;
+}
+
+.floorNum {
+  font-size: 12px;
+  color: #6c757d;
+  min-width: 30px;
+}
+
+.floorLine {
+  flex: 1;
+  height: 1px;
+  background: #1a1a2e;
+}
+
+.elevatorCar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 9%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  transition: top 1s linear;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #4ecca3;
+}
+
+.elevatorCar.moving {
+  background: linear-gradient(135deg, #4ecca3 0%, #48c6ef 100%);
+  animation: moving 1s ease-in-out infinite;
+}
+
+.elevatorCar.doors_open {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  animation: doorsOpen 0.5s ease-in-out;
+}
+
+.carInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.carFloor {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.carDirection {
+  font-size: 20px;
+}
+
+.status {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.statusRow:last-child {
+  margin-bottom: 0;
+}
+
+.statusLabel {
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.statusValue {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.statusValue.moving {
+  color: #4ecca3;
+}
+
+.statusValue.idle {
+  color: #adb5bd;
+}
+
+.statusValue.doors_open {
+  color: #f5576c;
+}
+
+@keyframes moving {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(78, 204, 163, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 24px rgba(78, 204, 163, 0.8);
+  }
+}
+
+@keyframes doorsOpen {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+  }
+  50% {
+    transform: translateX(-50%) scaleX(0.9);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+

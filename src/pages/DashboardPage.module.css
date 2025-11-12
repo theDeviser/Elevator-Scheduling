@@ -1,0 +1,139 @@
+.dashboard {
+  padding: 30px;
+  height: 100vh;
+  overflow-y: auto;
+  background: #0f3460;
+}
+
+.controlPanel {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.controlPanel h1 {
+  margin: 0 0 15px 0;
+  color: #4ecca3;
+  font-size: 28px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btnStart {
+  background: #4ecca3;
+  color: #1a1a2e;
+}
+
+.btnStart:hover {
+  background: #45b390;
+}
+
+.btnPause {
+  background: #ffc107;
+  color: #1a1a2e;
+}
+
+.btnPause:hover {
+  background: #e0a800;
+}
+
+.btnReset {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.btnReset:hover {
+  background: #ee5a52;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: #adb5bd;
+  font-weight: 600;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.indicator.running {
+  background: #4ecca3;
+  animation: pulse 2s infinite;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr 1.2fr 1.2fr 1fr;
+  gap: 20px;
+  height: calc(100vh - 200px);
+}
+
+.floorControlsSection {
+  grid-column: 1;
+}
+
+.elevatorSection {
+  min-height: 0;
+}
+
+.interiorControlsSection {
+  grid-column: 6;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(78, 204, 163, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px rgba(78, 204, 163, 0);
+  }
+}
+
+@media (max-width: 1400px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .floorControlsSection,
+  .elevatorSection,
+  .interiorControlsSection {
+    grid-column: 1;
+    min-height: 400px;
+  }
+}
+
