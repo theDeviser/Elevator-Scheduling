@@ -9,12 +9,27 @@ class Elevator {
     this.state = 'IDLE'; // 'IDLE', 'MOVING', 'DOORS_OPEN'
     this.internalQueue = new Set(); // Target floors
     this.doorTimer = null;
+    
+    // V2: New properties
+    this.status = 'OPERATIONAL'; // 'OPERATIONAL' or 'OUT_OF_ORDER'
+    this.accessibleFloors = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]); // Default: all floors
   }
 
   /**
    * Adds an internal request (button press from inside the elevator)
+   * V2: Only adds if floor is accessible and elevator is operational
    */
   addInternalRequest(floorNum) {
+    // V2: Check if elevator is operational
+    if (this.status !== 'OPERATIONAL') {
+      return;
+    }
+
+    // V2: Check if floor is accessible
+    if (!this.accessibleFloors.has(floorNum)) {
+      return;
+    }
+
     if (floorNum >= 0 && floorNum <= 9 && floorNum !== this.currentFloor) {
       this.internalQueue.add(floorNum);
     }
@@ -52,8 +67,14 @@ class Elevator {
 
   /**
    * Main logic tick - called every second
+   * V2: Does nothing if elevator is OUT_OF_ORDER
    */
   step(onLog) {
+    // V2: Don't operate if out of order
+    if (this.status !== 'OPERATIONAL') {
+      return;
+    }
+
     if (this.state === 'DOORS_OPEN') {
       // Doors are open, timer is running
       return;
@@ -144,6 +165,9 @@ class Elevator {
     this.direction = 'IDLE';
     this.state = 'IDLE';
     this.internalQueue.clear();
+    // V2: Reset status and accessible floors
+    this.status = 'OPERATIONAL';
+    this.accessibleFloors = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   }
 }
 

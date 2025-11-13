@@ -39,6 +39,7 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .panelHeader {
@@ -51,6 +52,8 @@
   color: #fff;
   font-weight: 600;
   font-size: 14px;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .currentFloor {
@@ -58,10 +61,66 @@
   font-size: 12px;
 }
 
+/* V2: Status Badge */
+.statusBadge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.statusBadge.operational {
+  background: rgba(78, 204, 163, 0.2);
+  color: #4ecca3;
+}
+
+.statusBadge.outOfOrder {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+}
+
+/* V2: Out of Order Overlay */
+.outOfOrderOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 46, 0.95);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.overlayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.overlayIcon {
+  font-size: 48px;
+}
+
+.overlayText {
+  color: #ff6b6b;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
 .buttonGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+}
+
+.buttonGrid.disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .floorBtn {
@@ -74,6 +133,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .floorBtn:hover:not(:disabled) {
@@ -101,6 +161,28 @@
   border-color: #6c757d;
 }
 
+/* V2: Restricted Floor */
+.floorBtn.restricted {
+  background: #16213e;
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+  opacity: 0.6;
+}
+
+.floorBtn.restricted:hover:not(:disabled) {
+  background: #16213e;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+  transform: none;
+}
+
+.restrictedIcon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 10px;
+}
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -115,4 +197,3 @@
     grid-template-columns: 1fr;
   }
 }
-

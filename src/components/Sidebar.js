@@ -4,6 +4,7 @@ import styles from './Sidebar.module.css';
 
 /**
  * Sidebar Component - For navigation
+ * V2: Added Metrics Dashboard and renamed Simulation to Configuration
  */
 const Sidebar = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <div className={styles.logo}>
         <h2>🏢 Elevator</h2>
-        <p>Simulator V1</p>
+        <p>Simulator V2</p>
       </div>
       
       <nav className={styles.nav}>
@@ -24,23 +25,26 @@ const Sidebar = () => {
           <span className={styles.icon}>📊</span>
           <span>Dashboard</span>
         </Link>
+        <Link to="/metrics" className={`${styles.navLink} ${isActive('/metrics')}`}>
+          <span className={styles.icon}>📈</span>
+          <span>Metrics</span>
+        </Link>
+        <Link to="/configuration" className={`${styles.navLink} ${isActive('/configuration')}`}>
+          <span className={styles.icon}>⚙️</span>
+          <span>Configuration</span>
+        </Link>
         <Link to="/logs" className={`${styles.navLink} ${isActive('/logs')}`}>
           <span className={styles.icon}>📝</span>
           <span>Logs</span>
         </Link>
-        <Link to="/simulation" className={`${styles.navLink} ${isActive('/simulation')}`}>
-          <span className={styles.icon}>⚙️</span>
-          <span>Simulation</span>
-        </Link>
       </nav>
 
       <div className={styles.footer}>
-        <p>LOOK Algorithm</p>
-        <p className={styles.version}>Version 1.0</p>
+        <p>LOOK & FIFO Algorithms</p>
+        <p className={styles.version}>Version 2.0</p>
       </div>
     </div>
   );
 };
 
 export default Sidebar;
-

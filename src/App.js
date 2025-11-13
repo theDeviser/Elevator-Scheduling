@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ElevatorProvider } from './context/ElevatorContext';
 import Sidebar from './components/Sidebar';
 import DashboardPage from './pages/DashboardPage';
+import MetricsDashboardPage from './pages/MetricsDashboardPage';
+import ConfigurationPage from './pages/ConfigurationPage';
 import LogsPage from './pages/LogsPage';
-import SimulationPage from './pages/SimulationPage';
 import './App.css';
 
 /**
  * Main App Component
+ * V2: Added MetricsDashboard and renamed Simulation to Configuration
  */
 function App() {
   return (
@@ -19,8 +21,9 @@ function App() {
           <div className="main-content">
             <Routes>
               <Route path="/" element={<DashboardPage />} />
+              <Route path="/metrics" element={<MetricsDashboardPage />} />
+              <Route path="/configuration" element={<ConfigurationPage />} />
               <Route path="/logs" element={<LogsPage />} />
-              <Route path="/simulation" element={<SimulationPage />} />
             </Routes>
           </div>
         </div>
@@ -30,4 +33,3 @@ function App() {
 }
 
 export default App;
-

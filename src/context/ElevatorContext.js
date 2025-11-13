@@ -5,6 +5,7 @@ const ElevatorContext = createContext();
 
 /**
  * ElevatorProvider - For global state management
+ * V2: Added new methods for algorithm selection, status, zoning, and validation
  */
 export const ElevatorProvider = ({ children }) => {
   const systemRef = useRef(new ElevatorSystem());
@@ -69,6 +70,45 @@ export const ElevatorProvider = ({ children }) => {
   };
 
   /**
+   * V2: Sets the scheduling algorithm
+   */
+  const setAlgorithm = (algorithmName) => {
+    systemRef.current.setAlgorithm(algorithmName);
+    updateState();
+  };
+
+  /**
+   * V2: Sets elevator operational status
+   */
+  const setElevatorStatus = (elevatorId, status) => {
+    systemRef.current.setElevatorStatus(elevatorId, status);
+    updateState();
+  };
+
+  /**
+   * V2: Sets elevator zoning (accessible floors)
+   */
+  const setElevatorZoning = (elevatorId, floorArray) => {
+    systemRef.current.setElevatorZoning(elevatorId, floorArray);
+    updateState();
+  };
+
+  /**
+   * V2: Applies a zoning preset
+   */
+  const setZoningPreset = (presetName) => {
+    systemRef.current.setZoningPreset(presetName);
+    updateState();
+  };
+
+  /**
+   * V2: Validates current configuration
+   */
+  const validate = () => {
+    return systemRef.current.validate();
+  };
+
+  /**
    * Cleanup on unmount
    */
   useEffect(() => {
@@ -87,6 +127,12 @@ export const ElevatorProvider = ({ children }) => {
     resetSimulation,
     addFloorRequest,
     addInternalRequest,
+    // V2: New methods
+    setAlgorithm,
+    setElevatorStatus,
+    setElevatorZoning,
+    setZoningPreset,
+    validate,
     updateState
   };
 
@@ -109,4 +155,3 @@ export const useElevator = () => {
 };
 
 export default ElevatorContext;
-
