@@ -1,0 +1,80 @@
+.algorithmSelector {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.select {
+  padding: 10px 15px;
+  background: #0f3460;
+  color: #fff;
+  border: 2px solid #4ecca3;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 250px;
+}
+
+.select:hover {
+  background: #16213e;
+  border-color: #45b390;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #4ecca3;
+  box-shadow: 0 0 0 3px rgba(78, 204, 163, 0.2);
+}
+
+.select option {
+  background: #16213e;
+  color: #fff;
+  padding: 10px;
+}
+
+.description {
+  flex: 1;
+  min-width: 200px;
+}
+
+.description p {
+  margin: 0;
+  color: #adb5bd;
+  font-size: 12px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .algorithmSelector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .description {
+    width: 100%;
+  }
+}
+

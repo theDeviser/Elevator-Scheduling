@@ -4,6 +4,7 @@ import styles from './InteriorControls.module.css';
 
 /**
  * InteriorControls Component - Buttons inside the elevator
+ * V2: Respects elevator status and accessible floors
  */
 const InteriorControls = () => {
   const { state, addInternalRequest } = useElevator();
@@ -22,6 +23,16 @@ const InteriorControls = () => {
     return state.elevators[elevatorId]?.currentFloor === floor;
   };
 
+  // V2: Check if floor is accessible
+  const isFloorAccessible = (elevatorId, floor) => {
+    return state.elevators[elevatorId]?.accessibleFloors.includes(floor);
+  };
+
+  // V2: Check if elevator is operational
+  const isElevatorOperational = (elevatorId) => {
+    return state.elevators[elevatorId]?.status === 'OPERATIONAL';
+  };
+
   return (
     <div className={styles.interiorControls}>
       <div className={styles.header}>
@@ -35,9 +46,23 @@ const InteriorControls = () => {
             <div className={styles.panelHeader}>
               <span>Elevator {elevator.id}</span>
               <span className={styles.currentFloor}>Current: F{elevator.currentFloor}</span>
+              {/* V2: Status indicator */}
+              <span className={`${styles.statusBadge} ${elevator.status === 'OPERATIONAL' ? styles.operational : styles.outOfOrder}`}>
+                {elevator.status === 'OPERATIONAL' ? '✓' : '✗'}
+              </span>
             </div>
             
-            <div className={styles.buttonGrid}>
+            {/* V2: Out of Order Overlay */}
+            {!isElevatorOperational(elevator.id) && (
+              <div className={styles.outOfOrderOverlay}>
+                <div className={styles.overlayContent}>
+                  <span className={styles.overlayIcon}>⚠️</span>
+                  <span className={styles.overlayText}>OUT OF ORDER</span>
+                </div>
+              </div>
+            )}
+            
+            <div className={`${styles.buttonGrid} ${!isElevatorOperational(elevator.id) ? styles.disabled : ''}`}>
               {Array.from({ length: 10 }, (_, i) => 9 - i).map(floor => (
                 <button
                   key={floor}
@@ -45,11 +70,26 @@ const InteriorControls = () => {
                     isTargetFloor(elevator.id, floor) ? styles.active : ''
                   } ${
                     isCurrentFloor(elevator.id, floor) ? styles.current : ''
+                  } ${
+                    !isFloorAccessible(elevator.id, floor) ? styles.restricted : ''
                   }`}
                   onClick={() => handleButtonClick(elevator.id, floor)}
-                  disabled={isCurrentFloor(elevator.id, floor)}
+                  disabled={
+                    isCurrentFloor(elevator.id, floor) ||
+                    !isElevatorOperational(elevator.id) ||
+                    !isFloorAccessible(elevator.id, floor)
+                  }
+                  title={
+                    !isFloorAccessible(elevator.id, floor)
+                      ? `Floor ${floor} not accessible by this elevator`
+                      : ''
+                  }
                 >
                   {floor}
+                  {/* V2: Restricted indicator */}
+                  {!isFloorAccessible(elevator.id, floor) && (
+                    <span className={styles.restrictedIcon}>🚫</span>
+                  )}
                 </button>
               ))}
             </div>
@@ -61,4 +101,3 @@ const InteriorControls = () => {
 };
 
 export default InteriorControls;
-

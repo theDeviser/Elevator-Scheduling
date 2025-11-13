@@ -10,12 +10,43 @@
 .header {
   margin-bottom: 15px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .header h3 {
   margin: 0;
   color: #4ecca3;
   font-size: 18px;
+}
+
+/* V2: Status Badge */
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statusBadge.operational {
+  background: rgba(78, 204, 163, 0.2);
+  color: #4ecca3;
+}
+
+.statusBadge.outOfOrder {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .shaft {
@@ -50,6 +81,19 @@
   font-size: 12px;
   color: #6c757d;
   min-width: 30px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* V2: Restricted floor indicator */
+.floorNum.restricted {
+  color: #ff6b6b;
+  opacity: 0.6;
+}
+
+.lockIcon {
+  font-size: 10px;
 }
 
 .floorLine {
@@ -84,6 +128,14 @@
   animation: doorsOpen 0.5s ease-in-out;
 }
 
+/* V2: Out of Order car */
+.elevatorCar.outOfOrderCar {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  border-color: #ff6b6b;
+  opacity: 0.7;
+  animation: none;
+}
+
 .carInner {
   display: flex;
   flex-direction: column;
@@ -98,6 +150,12 @@
 
 .carDirection {
   font-size: 20px;
+}
+
+.outOfOrderIcon {
+  color: #ff6b6b;
+  font-size: 24px;
+  font-weight: 900;
 }
 
 .status {
@@ -125,6 +183,7 @@
   color: #fff;
   font-weight: 600;
   font-size: 13px;
+  text-align: right;
 }
 
 .statusValue.moving {
@@ -137,6 +196,13 @@
 
 .statusValue.doors_open {
   color: #f5576c;
+}
+
+/* V2: Access info */
+.statusValue.accessInfo {
+  font-size: 11px;
+  max-width: 150px;
+  word-wrap: break-word;
 }
 
 @keyframes moving {
@@ -159,4 +225,3 @@
     transform: translateX(-50%) scaleX(1);
   }
 }
-

@@ -3,10 +3,12 @@ import { useElevator } from '../context/ElevatorContext';
 import FloorControls from '../components/FloorControls';
 import ElevatorShaft from '../components/ElevatorShaft';
 import InteriorControls from '../components/InteriorControls';
+import AlgorithmSelector from '../components/AlgorithmSelector';
 import styles from './DashboardPage.module.css';
 
 /**
  * DashboardPage - Main simulator UI
+ * V2: Added AlgorithmSelector component
  */
 const DashboardPage = () => {
   const { state, isRunning, startSimulation, pauseSimulation, resetSimulation } = useElevator();
@@ -34,6 +36,11 @@ const DashboardPage = () => {
             <span>{isRunning ? 'Running' : 'Paused'}</span>
           </div>
         </div>
+        
+        {/* V2: Algorithm Selector */}
+        <div className={styles.algorithmSection}>
+          <AlgorithmSelector />
+        </div>
       </div>
 
       {/* Main Grid Layout */}
@@ -60,4 +67,3 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
-
